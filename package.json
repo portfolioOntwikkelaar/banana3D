@@ -1,11 +1,14 @@
 {
-  "repository": "#",
+  "repository": "banana3D",
   "license": "UNLICENSED",
   "author": "webontw",
   "scripts": {
     "build": "webpack --config ./bundler/webpack.prod.js",
-    "dev": "webpack serve --config ./bundler/webpack.dev.js"
+    "dev": "webpack serve --config ./bundler/webpack.dev.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://portfolioOntwikkelaar.github.io/banana3D",
   "dependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
@@ -26,5 +29,8 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
     "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

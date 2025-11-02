@@ -144,12 +144,8 @@ function transformMesh(){
 function introAnimation() {
     controls.enabled = false //disable orbit controls to animate the camera
 
-    new TWEEN.Tween(camera.position.set(0,-1,0 )).to({ // from camera position
-        x: 2, //desired x position to go
-        y: -0.4, //desired y position to go
-        z: 6.1 //desired z position to go
-    }, 6500) // time take to animate
-    .easing(TWEEN.Easing.Quadratic.InOut).start() // define delay, easing
+    new TWEEN.Tween(camera.position.set(0,-1,0 )).to({ x: 2, y: -0.4, z: 6.1}, 6500) // time take to animate
+    .easing(TWEEN.Easing.Quadratic.InOut).start().onUpdate(() => camera.lookAt(0,0,0)) // define delay, easing
     .onComplete(function () { //on finish animation
         controls.enabled = true //enable orbit controls
         document.querySelector('.main--title').classList.add('ended')
@@ -272,7 +268,7 @@ function rendeLoop() {
     distortPass.material.uniforms.jitterOffset.value += 0.01
     const time = clock.getElapsedTime()
     m.uniforms.iTime.value = time
-
+    
     requestAnimationFrame(rendeLoop) //loop the render function
 }
 
